@@ -9,6 +9,5 @@ if(!empty($_POST['hname']))
     $result = mysqli_query($db, $sql_statement);
     echo "The hospital " . $hname . " has been added succesfully.";
 }
-echo "</ul>";
 ?>
 <a href="admin.php">Go back to main page</a>
