@@ -5,3 +5,7 @@
 <form action="departmentsAdmin.php", method="GET">
 <button>Departments</button>
 </form>
+
+<form action="doctorsAdmin.php", method="GET">
+<button>Doctors</button>
+</form>
