@@ -9,3 +9,7 @@
 <form action="doctorsAdmin.php", method="GET">
 <button>Doctors</button>
 </form>
+
+<form action="patientsAdmin.php", method="GET">
+<button>Patients</button>
+</form>
