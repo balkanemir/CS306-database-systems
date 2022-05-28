@@ -13,3 +13,7 @@
 <form action="patientsAdmin.php", method="GET">
 <button>Patients</button>
 </form>
+
+<form action="visitorsAdmin.php", method="GET">
+<button>Visitors</button>
+</form>
