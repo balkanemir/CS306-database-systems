@@ -1,3 +1,5 @@
+<header><h1>ADMIN - MAIN PAGE</h1></header>
+
 <form action="hospitalsAdmin.php", method="GET">
 <button>Hospitals</button>
 </form>
