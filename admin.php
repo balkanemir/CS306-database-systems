@@ -17,3 +17,19 @@
 <form action="visitorsAdmin.php", method="GET">
 <button>Visitors</button>
 </form>
+
+<form action="nursesAdmin.php", method="GET">
+<button>Nurses</button>
+</form>
+
+<form action="secretariesAdmin.php", method="GET">
+<button>Secretaries</button>
+</form>
+
+<form action="surgeryRoomsAdmin.php", method="GET">
+<button>SurgeryRooms</button>
+</form>
+
+<form action="appointmentsAdmin.php", method="GET">
+<button>Appointments</button>
+</form>
