@@ -4,6 +4,10 @@ body {
     justify-content: center;
     position: relative;
     background-color: rgb(237, 242, 251);
+    background: url('https://img.freepik.com/free-vector/hospital-building-town-clinic-vector-cartoon-cityscape-with-exterior-modern-medical-office-concept-healthcare-medicine-center-first-aid-treatment-service_107791-3996.jpg?w=2000') no-repeat center center fixed;
+    background-size: 2000px 1000px;
+    animation: wave 5s ease;
+    animation-fill-mode: forwards;
 }
 
 #container {
@@ -13,10 +17,11 @@ body {
     padding-right: 500px;
     padding-top: 100px;
     padding-bottom: 300px;
-    background-color: rgb(171, 196, 255);
+    background-color: rgba(171, 196, 255, 0);
     text-align: center;
     line-height: 30px;
     font-family: Didot, serif;
+    
 }
 
 .center {
@@ -29,54 +34,59 @@ body {
 
 @keyframes wave {
     0% {
-
-        opacity: 0.0;
+        opacity: 0;
     }
     100% {
-
-        opacity: 1.0;
+        opacity: 1;
     }
 }
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 300px;
+    font-family: Didot, serif;
+    transition-delay: 2s;
 }
 
 .card {
     width: 400px;
-    padding-right: 250px;
-    padding-left: 20px;
+    height: 600px;
+    padding: 10px;
     display: grid;
     grid-template-rows: max-content 200px 1fr;
-    margin: 10px;
+    margin: 20px;
     border: solid 1px rgb(171, 196, 255);
     border-radius: 3%;
-    animation: wave 5s ease-in-out;
+    animation: wave 5s ease;
+    animation-fill-mode: forwards;
+    background-color: rgb(131, 56, 236);
 }    
-
-.c1 {
-    background-color: rgb(215, 227, 252);
-    animation-delay: 0.5s;
-}
-
-.c2 {
-    background-color: rgb(204, 219, 253);
-    animation-delay: 1s;
-}
-
-.c3 {
-    background-color: rgb(193, 211, 254);
-    animation-delay: 1.5s;
-}
-
-.c4 {
-    background-color: rgb(182, 204, 254);
-    animation-delay: 2s;
-}
 
 h1 {
     position: absolute;
     left: 40%;
+    color: white;
+}
+
+select {
+    width: 400px;
+    height: 50px;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+
+li{
+    color: white;
+    border:rgb(171, 196, 255) solid 1px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+b {
+    color: rgb(171, 196, 255);
 }
