@@ -1,4 +1,20 @@
-<?php
+<html>
+    <head>
+        <title>Support</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+</div id='chatbody'> 
+<div > 
+<div class="chat-box">
+    </div>
+</div>
+</div>
+<div class="menu">
+            <div class="name">Support</div>
+        </div>
+    <ol class="chat">
+    <?php
     $URL = "https://cs-306-project-d2c2f-default-rtdb.firebaseio.com/Chats.json";
     function get_messages() {
         global $URL;
@@ -35,20 +51,34 @@
     $keys = array_keys($msg_res_json);
     for ($i = 0; $i < count($keys); $i++) {
         $chat_msg = $msg_res_json[$keys[$i]];
-        echo $chat_msg['name'] . "<br>";
         $msg = isset($chat_msg['msg']) ? $chat_msg['msg'] : 'EMPTY FIELD';
-        echo $msg . "<br>";
+        echo  '<li class="self">
+        <div class="msg">
+            <div class="user">' .  $chat_msg['name'] . '<span class="range admin">Admin</span></div>
+        <p>' . $msg . '</p>
+        <time>' . $chat_msg['time'] . '</time>
+        </div>
+    </li>';
     }
 
 
     if(isset($_POST['usermsg'])) {
         $user_msg = $_POST['usermsg'];
         send_msg($user_msg, "Guest", 234234);
-        echo $user_msg;
+        echo  '<li class="self">
+        <div class="msg">
+            <div class="user">' .  $chat_msg['name']. '</div>
+        <p>' . $user_msg . '</p>
+        <time>' . $chat_msg['time'] . '</time>
+        </div>
+    </li>';
     }
 ?>
+    </ol>
+<div class="typezone">
+<form name="form" method="POST" action="chats.php"><textarea name="usermsg" type="text" placeholder="Say something"></textarea><input type="submit" class="send" value=""/></form>
 
-<form name="form" method="POST" action="chats.php">
-    <input name="usermsg" class="testarea"  placeholder="Type here!" type="text">
-    <button>Submit</button>
-</form>
+    </body>
+</html>
+
+
