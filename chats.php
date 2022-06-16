@@ -15,7 +15,18 @@
         </div>
     <ol class="chat">
     <?php
+    include "config.php";
+    header("refresh: 60");
+
+    $uid = $_REQUEST['uid'];
+
+    // fetching name
+    $sql_statement = "SELECT name FROM users WHERE uid=$uid";
+    $result = mysqli_query($db, $sql_statement);
+    $row = mysqli_fetch_assoc($result);
+    $name = $row['name'];
     $URL = "https://cs-306-project-d2c2f-default-rtdb.firebaseio.com/Chats.json";
+
     function get_messages() {
         global $URL;
         $ch = curl_init();
@@ -29,54 +40,36 @@
         return json_decode($response, true);
     }
 
-    function send_msg($msg, $name, $time) {
-        global $URL;
-        $ch = curl_init();
-        $msg_json= new stdClass();
-        $msg_json->msg = $msg;
-        $msg_json->name = $name;
-        $msg_json->time = date('H:i');
-        $encoded_json_obj = json_encode($msg_json);
-        curl_setopt_array($ch, array(
-            CURLOPT_URL => $URL,
-            CURLOPT_POST => TRUE,
-            CURLOPT_RETURNTRANSFER => TRUE,
-            CURLOPT_HTTPHEADER => array('Content-Type: application/json'), CURLOPT_POSTFIELDS => $encoded_json_obj
-        ));
-        $response = curl_exec($ch);
-        return $response;
-    }
-
     $msg_res_json = get_messages();
+
     $keys = array_keys($msg_res_json);
     for ($i = 0; $i < count($keys); $i++) {
         $chat_msg = $msg_res_json[$keys[$i]];
         $msg = isset($chat_msg['msg']) ? $chat_msg['msg'] : 'EMPTY FIELD';
-        echo  '<li class="self">
-        <div class="msg">
-            <div class="user">' .  $chat_msg['name'] . '<span class="range admin">Admin</span></div>
-        <p>' . $msg . '</p>
-        <time>' . $chat_msg['time'] . '</time>
-        </div>
-    </li>';
+        if ($chat_msg['name'] == $name)
+            echo  '<li class="self">
+            <div class="msg">
+                <div class="user">' .  $chat_msg['name'] . '</div>
+            <p>' . $msg . '</p>
+            <time>' . $chat_msg['time'] . '</time>
+            </div></li>';
+        else 
+            echo  '<li class="other">
+            <div class="msg">
+                <div class="user">' .  $chat_msg['name'] . '<span class="range admin">Admin</span></div>
+            <p>' . $msg . '</p>
+            <time>' . $chat_msg['time'] . '</time>
+            </div></li>';
     }
 
-
-    if(isset($_POST['usermsg'])) {
-        $user_msg = $_POST['usermsg'];
-        send_msg($user_msg, "Guest", 234234);
-        echo  '<li class="self">
-        <div class="msg">
-            <div class="user">' .  $chat_msg['name']. '</div>
-        <p>' . $user_msg . '</p>
-        <time>' . $chat_msg['time'] . '</time>
-        </div>
-    </li>';
-    }
+    echo '</ol>
+    <div class="typezone">
+    <form name="form" method="POST" action="messageInsert.php">
+        <input class="inputchat" name="usermsg" type="text" placeholder="Say something"></input>
+        <input type="submit" class="send" value=""/>
+        <input name="uid" type="hidden" value=' . $uid . '/></form>';
 ?>
-    </ol>
-<div class="typezone">
-<form name="form" method="POST" action="chats.php"><textarea name="usermsg" type="text" placeholder="Say something"></textarea><input type="submit" class="send" value=""/></form>
+
 
     </body>
 </html>

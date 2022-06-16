@@ -24,8 +24,21 @@ include "config.php";
             }
             ?>
             </select>
-            <button>GO TO PROFILE</button>
-            </form>
+            <button>View Profile</button><br>
+        </form>
+        <form action="UserInsert.php", method="POST">
+            <input type="text" , id="name", name="name", placeholder="Name"> 
+            <input type="text" , id="surname", name="surname", placeholder="Surname"> 
+                
+            <select name="idsSup">
+                <option value="miss_info">Missing/Incorrect Information Report</option>
+                <option value="app_hos">Apply for Hospital</option>
+                <option value="sys_iss">System Issues</option>
+                <option value="oth">Others</option>
+            </select>
+            <button>Contact Us</button>
+            
+        </form>
         </div>
     </body>
 </html>

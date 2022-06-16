@@ -6,17 +6,21 @@ body {
     background-color: rgb(237, 242, 251);
     background: url('https://img.freepik.com/free-vector/hospital-building-town-clinic-vector-cartoon-cityscape-with-exterior-modern-medical-office-concept-healthcare-medicine-center-first-aid-treatment-service_107791-3996.jpg?w=2000') no-repeat center center fixed;
     background-size: 2000px 1000px;
-    animation: wave 5s ease;
-    animation-fill-mode: forwards;
 }
 
-#chatbody {
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: rgb(237, 242, 251);
-    background-size: 2000px 1000px;
+input {
+    width: 400px;
+    border-radius: 5px;
+    border: solid 2px black
+}
+
+.inputchat {
+    font-size: 16;
+    margin: 3px;
+    width: 1300px;
+    height: 40px;
+    border-radius: 5px;
+    border: solid 2px black
 }
 
 #container {
@@ -53,18 +57,18 @@ body {
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    grid-gap: 300px;
+    grid-gap: 200px;
     font-family: Didot, serif;
     transition-delay: 2s;
 }
 
 .card {
-    width: 400px;
+    width: 340px;
     height: 600px;
     padding: 10px;
     display: grid;
     grid-template-rows: max-content 200px 1fr;
-    margin: 20px;
+    margin: 40px;
     border: solid 1px rgb(171, 196, 255);
     border-radius: 3%;
     animation: wave 5s ease;
@@ -78,11 +82,16 @@ h1 {
     color: white;
 }
 
+h3 {
+    position: absolute;
+    left: 45%;
+}
+
 select {
     width: 400px;
-    height: 50px;
+    height: 30px;
     padding: 16px 20px;
-    border: none;
+    border: solid 2px black;
     border-radius: 4px;
     background-color: #f1f1f1;
 }
@@ -93,6 +102,9 @@ li{
     margin: 5px;
     padding: 5px;
     border-radius: 10px;
+    height: 70px;
+    background-color: rgba(137, 43, 226, 0.904);
+    border: solid 1px rgb(171, 196, 255);
 }
 
 b {
@@ -175,7 +187,7 @@ b {
     position: absolute;
     top: 30px;
     left: 115px;
-    font-family: 'Lato';
+    font-family: Didot, serif;
     font-size: 11px;
     font-weight: 400;
     color: rgba(255,255,255,0.6);

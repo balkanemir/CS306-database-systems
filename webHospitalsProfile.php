@@ -20,7 +20,7 @@ include "config.php";
             }
             $row = mysqli_fetch_assoc($result);
             $hospital_name = $row['Hname'];
-            echo "<h1>" . $hospital_name .  "</h1>";
+            echo "<h3>" . $hospital_name .  "</h3>";
             
             ?>
             <div class="cards center">
