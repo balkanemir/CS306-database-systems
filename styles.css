@@ -37,6 +37,12 @@ input {
     
 }
 
+a {
+    color: white;
+    font-size: 20;
+    line-height: 60px;
+}
+
 .center {
     position: relative;
     left: 50%;

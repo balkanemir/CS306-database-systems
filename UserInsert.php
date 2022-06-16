@@ -5,7 +5,8 @@
         $surname = $_POST['surname'];
         $topic = $_POST['idsSup'];
         $uid = rand();
-        $sql_statement = "INSERT INTO Users (uid, name ,surname, topic ) VALUES('$uid','$name','$surname', '$topic')";
+        $aid = rand();
+        $sql_statement = "INSERT INTO Users (uid, name ,surname, topic, adminId ) VALUES('$uid','$name','$surname', '$topic', '$aid')";
         $result = mysqli_query($db, $sql_statement);
         header("Location: chats.php?uid=" . $uid);
     }

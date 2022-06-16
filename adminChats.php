@@ -11,20 +11,22 @@
 </div>
 </div>
 <div class="menu">
-            <div class="name">Support</div>
+            <div class="name">Support - Admin</div>
         </div>
     <ol class="chat">
     <?php
     include "config.php";
     header("refresh: 60");
 
-    $uid = '103188277';
+    $uid = $_REQUEST['uid'];
 
-    // fetching name
-    $sql_statement = "SELECT name FROM users WHERE uid=$uid";
+    // fetching rid
+    $sql_statement = "SELECT uid FROM users WHERE adminId=$uid";
     $result = mysqli_query($db, $sql_statement);
     $row = mysqli_fetch_assoc($result);
-    $name = $row['name'];
+    $rid = $row['uid'];
+
+    $name = 'Admin';
     $URL = "https://cs-306-project-d2c2f-default-rtdb.firebaseio.com/Chats.json";
 
     function get_messages() {
@@ -46,28 +48,28 @@
     for ($i = 0; $i < count($keys); $i++) {
         $chat_msg = $msg_res_json[$keys[$i]];
         $msg = isset($chat_msg['msg']) ? $chat_msg['msg'] : 'EMPTY FIELD';
-        if ($chat_msg['name'] == $name)
+        if ($chat_msg['uid'] == $uid)
             echo  '<li class="self">
             <div class="msg">
-                <div class="user">' .  $chat_msg['name'] . '<span class="range admin">Admin</span></div>
+                <div class="user">' .  $chat_msg['name'] .  ' ' . $chat_msg['surname'] . '<span class="range admin">Admin</span></div>
             <p>' . $msg . '</p>
             <time>' . $chat_msg['time'] . '</time>
             </div></li>';
-        else 
+        if ($chat_msg['uid'] == $rid)
             echo  '<li class="other">
             <div class="msg">
-                <div class="user">' .  $chat_msg['name'] . '</div>
+                <div class="user">' .  $chat_msg['name'] . ' ' . $chat_msg['surname'] . '</div>
             <p>' . $msg . '</p>
             <time>' . $chat_msg['time'] . '</time>
             </div></li>';
     }
-
+    echo '<a href="chatPanel.php">Go Back to Chat Panel</a>';
     echo '</ol>
     <div class="typezone">
     <form name="form" method="POST" action="messageInsert.php">
         <input class="inputchat" name="usermsg" type="text" placeholder="Say something"></input>
         <input type="submit" class="send" value=""/>
-        <input name="uid" type="hidden" value="103188277"/></form>';
+        <input name="uid" type="hidden" value="' . $uid . '"/></form>';
 ?>
 
 
