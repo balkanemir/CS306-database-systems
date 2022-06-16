@@ -34,13 +34,11 @@ if(isset($_POST['usermsg'])) {
     $name = $row['name'];
     echo "<h1>". $name . "</h1>";
     send_msg($user_msg, $name, $uid);
-    // echo  '<li class="self">
-    // <div class="msg">
-    //     <div class="user">' .  $chat_msg['name']. '</div>
-    // <p>' . $user_msg . '</p>
-    // <time>' . $chat_msg['time'] . '</time>
-    // </div>
-    // </li>';
-    header("Location: chats.php?uid=" . $uid);
+    if ($uid == "103188277") {
+        header("Location: adminChats.php");
+    }
+    else {
+        header("Location: chats.php?uid=" . $uid);
+    }
     } 
 ?>
